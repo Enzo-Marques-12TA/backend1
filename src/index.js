@@ -13,7 +13,7 @@ app.use(express.json())
 
 // GET, POST, PUT, DELETE, PATCH, PUT
 app.get("/", (request, response) => {
-    const selectCommand = "SELECT * FROM marciomarcal_02ta"
+    const selectCommand = "SELECT * FROM enzo_marques_02ta"
 
     database.query(selectCommand, (error, users) => {
         if(error){
@@ -33,7 +33,7 @@ app.post("/cadastrar", (request, response) => {
 
     //cadastar o usuário no backend
     const insertCommand = `
-    INSERT INTO enzomarques_02ta(name, email, age, nickname, password)
+    INSERT INTO enzo_marques_02ta(name, email, age, nickname, password)
     VALUES (?, ?, ?, ?, ?)
     `
 
