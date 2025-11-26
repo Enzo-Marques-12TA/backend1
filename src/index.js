@@ -31,7 +31,7 @@ app.get("/", (request, response) => {
 app.post("/cadastrar", (request, response) => {
     const { name, email, age, nickname, password } = request.body.user
 
-    //cadastar o usuário no backend
+    //cadastrar o usuário no backend
     const insertCommand = `
     INSERT INTO enzo_marques_02ta(name, email, age, nickname, password)
     VALUES (?, ?, ?, ?, ?)
