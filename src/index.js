@@ -3,7 +3,7 @@ import cors from "cors"
 import mysql from "mysql2"
 
 
-const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST} = process.env
+const { DB_NAME, DB_USER, DB_PASSWORD, DB_HOST } = process.env
 
 const app = express()
 const port = 3333
@@ -13,15 +13,18 @@ app.use(express.json())
 
 // GET, POST, PUT, DELETE, PATCH, PUT
 app.get("/", (request, response) => {
-    const selectCommand = "SELECT * FROM enzo_marques_02ta"
+    const selectCommand = `
+    SELECT name, email, age, nickname, password
+    FROM enzo_marques_02ta
+    `
 
     database.query(selectCommand, (error, users) => {
-        if(error){
+        if (error) {
             console.log(error)
             return
         }
 
-            response.json(users)
+        response.json(users)
     })
 
 
@@ -38,12 +41,12 @@ app.post("/cadastrar", (request, response) => {
     `
 
     database.query(insertCommand, [name, email, age, nickname, password], (error) => {
-        if(error) {
+        if (error) {
             console.log(error)
             return
         }
 
-        response.status(201).json({ message: "Usuário cadastrado com sucesso! "})
+        response.status(201).json({ message: "Usuário cadastrado com sucesso! " })
     })
 })
 
