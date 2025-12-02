@@ -67,12 +67,13 @@ app.post("/login", (request, response) =>{
         //user => array [{ name, email}]
         //tamanho do array = array.length = user.lewngth = 1
         //verificar se o usuário existe e se a senha está incorreta
-        if(user.length === 0 || user [0].password !== password) {
+        if(user.length === 0 || user[0].password !== password) {
             response.json({ message: "Usuário ou senhas incorretos!" })
             return
         }
 
-        response.json({id: user [0].id,
+        response.json({
+            id: user[0].id,
             name: user[0].name
         })
     })
